@@ -31,9 +31,8 @@ pipeline {
                 sh 'kubectl apply -f deployment.yaml'
             }
         }
-    }
-}
-
+        
+        // ✅ Move Terraform Apply inside the stages block
         stage('Terraform Apply') {
             steps {
                 dir('eks-terraform') {
@@ -41,5 +40,5 @@ pipeline {
                 }
             }
         }
-    }
-}
+    }  // ✅ Correctly closes 'stages' block
+}  // ✅ Correctly closes 'pipeline' block
